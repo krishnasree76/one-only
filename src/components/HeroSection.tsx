@@ -26,21 +26,21 @@ const HeroSection = () => {
     {
       image: hero1,
       primaryBtn: {
-        label: "Services",
+        label: "Our Services",
         to: "/services",
       },
     },
     {
       image: hero2,
       primaryBtn: {
-        label: "Contact",
-        to: "/contact",
+        label: "Our Stores",
+        to: "/OurStores",
       },
     },
     {
       image: hero3,
       primaryBtn: {
-        label: "About",
+        label: "About Us",
         to: "/about",
       },
     },
@@ -120,17 +120,27 @@ const HeroSection = () => {
           </motion.p>
 
           <motion.h1
-            key={`title-${current}`}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-foreground leading-tight mb-6"
-          >
-            THE ONE & ONLY
-            <span className="block text-gradient-silver mt-2">
-              Affordable Men's Salon
-            </span>
-          </motion.h1>
+  key={`title-${current}`}
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.1 }}
+  className="text-4xl md:text-6xl lg:text-7xl font-pop font-extrabold tracking-[0.06em] text-white leading-none mb-4 uppercase"
+>
+  THE ONE & ONLY
+</motion.h1>
+
+<motion.p
+  key={`sub-${current}`}
+  initial={{ opacity: 0, y: 16 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  className="font-pop text-sm md:text-base font-semibold uppercase tracking-[0.10em] text-white/90"
+>
+  AFFORDABLE MENS SALON
+</motion.p>
+
+
+
 
           <motion.p
             key={`desc-${current}`}

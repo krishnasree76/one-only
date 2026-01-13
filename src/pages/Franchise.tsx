@@ -81,11 +81,13 @@ const setupIncludes = [
   "A/C",
 ];
 
+
+
 const furnitureEquipment = [
-  "4 gents haircut chairs",
-  "1 hair wash chair",
-  "1 pedicure chair",
-  "Comfortable soft seating (waiting area)",
+  "Branded Marc Haircut Chairs",
+  "Pedicure & Manicure Chairs and furniture",
+  "Branded Products and Kits",
+  "Billing Software support",
 ];
 
 const franchiseSupport = [

@@ -11,6 +11,8 @@ const navLinks = [
   { path: "/franchise", label: "Franchise" },
   { path: "/gallery", label: "Gallery" },
   { path: "/contact", label: "Contact" },
+  { path: "/our-stores", label: "Our Stores" },
+
 ];
 
 const Navbar = () => {

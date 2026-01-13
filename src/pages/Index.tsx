@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Shield, Users, TrendingUp, Award, Clock, IndianRupee, HeartHandshake, ChevronRight } from "lucide-react";
-import salonInterior from "@/assets/salon-interior.png";
+import salonInterior from "@/assets/image.png";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";

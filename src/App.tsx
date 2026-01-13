@@ -12,6 +12,8 @@ import Contact from "./pages/Contact";
 import ApplyFranchise from "./pages/ApplyFranchise";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "@/components/ScrollToTop";
+import OurStores from "@/pages/OurStores";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -27,6 +29,8 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/franchise" element={<Franchise />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/our-stores" element={<OurStores />} />
+
           <Route path="/contact" element={<Contact />} />
           <Route path="/apply-franchise" element={<ApplyFranchise />} />
           <Route path="*" element={<NotFound />} />

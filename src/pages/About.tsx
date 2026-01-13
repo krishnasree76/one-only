@@ -51,9 +51,26 @@ const About = () => {
               About Us
             </p>
 
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">
-              THE ONE & ONLY <span className="text-gradient-silver">Affordable Men's Salon</span>
-            </h1>
+            <motion.h1
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.1 }}
+  className="text-4xl md:text-6xl lg:text-7xl font-pop font-extrabold tracking-[0.06em] text-foreground leading-none mb-4 uppercase"
+>
+  THE ONE & ONLY
+</motion.h1>
+
+<motion.p
+  initial={{ opacity: 0, y: 16 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  className="font-pop text-sm md:text-base font-semibold uppercase tracking-[0.10em] text-muted-foreground mb-6"
+>
+  AFFORDABLE MENS SALON
+</motion.p>
+
+
+
 
             <p className="text-muted-foreground text-lg">
               A professionally managed grooming brand built for modern men — delivering consistent quality,

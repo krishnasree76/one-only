@@ -19,6 +19,10 @@ import gallery9 from "@/assets/gallery9.png";
 import gallery10 from "@/assets/gallery10.png";
 import gallery11 from "@/assets/gallery11.png";
 import gallery12 from "@/assets/gallery12.png";
+import gallery13 from "@/assets/gallery13.png";
+import gallery14 from "@/assets/gallery14.png";
+import gallery15 from "@/assets/gallery15.png";
+import gallery16 from "@/assets/gallery16.png";
 
 const galleryImages = [
   gallery1,
@@ -33,6 +37,10 @@ const galleryImages = [
   gallery10,
   gallery11,
   gallery12,
+  gallery13,
+  gallery14,
+  gallery15,
+  gallery16,
 ];
 
 const Gallery = () => {

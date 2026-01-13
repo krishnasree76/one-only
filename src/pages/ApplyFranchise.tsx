@@ -20,15 +20,22 @@ const franchiseSchema = z.object({
   investmentRange: z.string().min(1, "Investment range is required"),
   preferredLocation: z.string().trim().min(1, "Preferred location is required").max(200),
   hasExperience: z.string().min(1, "Please select an option"),
+  startTimeline: z.string().min(1, "Please select when you want to start"),
+
   message: z.string().trim().max(1000).optional(),
+  
 });
 
 const investmentRanges = [
-  "₹3-5 Lakhs",
-  "₹5-8 Lakhs",
-  "₹8-12 Lakhs",
-  "₹12+ Lakhs",
+  "₹5-10 Lakhs",
+  "₹10-15 Lakhs",
+  "₹15-20 Lakhs",
+  "₹20+ Lakhs",
 ];
+
+const startTimelines = ["Immediate", "1 or 2 Months", "After 3 Months"];
+
+
 
 const ApplyFranchise = () => {
   const { toast } = useToast();
@@ -41,6 +48,7 @@ const ApplyFranchise = () => {
     investmentRange: "",
     preferredLocation: "",
     hasExperience: "",
+    startTimeline: "",
     message: "",
   });
 
@@ -80,6 +88,7 @@ const ApplyFranchise = () => {
 
 *Investment Details:*
 • Investment Range: ${formData.investmentRange}
+• Start Timeline: ${formData.startTimeline}
 • Business Experience: ${formData.hasExperience === "yes" ? "Yes" : "No"}
 
 *Additional Message:*
@@ -87,6 +96,7 @@ ${formData.message || "N/A"}
 
 ---
 I am interested in becoming a franchise partner. Please contact me with more details.`;
+
 
     const encodedMessage = encodeURIComponent(whatsappMessage);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
@@ -220,43 +230,77 @@ I am interested in becoming a franchise partner. Please contact me with more det
 
                   {/* Investment Info */}
                   <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-4">Investment Details</h3>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">Investment Range *</label>
-                        <Select
-                          value={formData.investmentRange}
-                          onValueChange={(value) => handleSelectChange("investmentRange", value)}
-                        >
-                          <SelectTrigger className="bg-background border-border">
-                            <SelectValue placeholder="Select investment range" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {investmentRanges.map((range) => (
-                              <SelectItem key={range} value={range}>
-                                {range}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">Business Experience *</label>
-                        <Select
-                          value={formData.hasExperience}
-                          onValueChange={(value) => handleSelectChange("hasExperience", value)}
-                        >
-                          <SelectTrigger className="bg-background border-border">
-                            <SelectValue placeholder="Do you have business experience?" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="yes">Yes</SelectItem>
-                            <SelectItem value="no">No</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-                  </div>
+  <h3 className="text-lg font-semibold text-foreground mb-4">
+    Investment Details
+  </h3>
+
+  <div className="grid sm:grid-cols-2 gap-4">
+    {/* Investment Range */}
+    <div>
+      <label className="block text-sm font-medium text-foreground mb-2">
+        Investment Range *
+      </label>
+      <Select
+        value={formData.investmentRange}
+        onValueChange={(value) => handleSelectChange("investmentRange", value)}
+      >
+        <SelectTrigger className="bg-background border-border">
+          <SelectValue placeholder="Select investment range" />
+        </SelectTrigger>
+        <SelectContent>
+          {investmentRanges.map((range) => (
+            <SelectItem key={range} value={range}>
+              {range}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+
+    {/* Business Experience */}
+    <div>
+      <label className="block text-sm font-medium text-foreground mb-2">
+        Business Experience *
+      </label>
+      <Select
+        value={formData.hasExperience}
+        onValueChange={(value) => handleSelectChange("hasExperience", value)}
+      >
+        <SelectTrigger className="bg-background border-border">
+          <SelectValue placeholder="Do you have business experience?" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="yes">Yes</SelectItem>
+          <SelectItem value="no">No</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
+
+    {/* ✅ NEW START TIMELINE */}
+    <div className="sm:col-span-2">
+      <label className="block text-sm font-medium text-foreground mb-2">
+        When are you planning to start the business? *
+      </label>
+
+      <Select
+        value={formData.startTimeline}
+        onValueChange={(value) => handleSelectChange("startTimeline", value)}
+      >
+        <SelectTrigger className="bg-background border-border">
+          <SelectValue placeholder="Select your timeline" />
+        </SelectTrigger>
+        <SelectContent>
+          {startTimelines.map((t) => (
+            <SelectItem key={t} value={t}>
+              {t}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  </div>
+</div>
+
 
                   {/* Message */}
                   <div>
