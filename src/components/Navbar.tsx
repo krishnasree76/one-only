@@ -25,17 +25,18 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="The One & Only" className="h-14 w-auto" />
-            <div className="block leading-tight">
-  <p className="text-[10px] sm:text-xs text-muted-foreground tracking-widest uppercase">
-    The One & Only
-  </p>
-  <p className="text-xs sm:text-sm font-semibold text-foreground">
-    Affordable Men's Salon
-  </p>
-</div>
+  <img src={logo} alt="The One & Only" className="h-14 w-auto" />
 
-          </Link>
+  <div className="leading-none">
+    <p className="font-pop font-extrabold uppercase text-foreground tracking-[0.08em] text-sm sm:text-base">
+      THE ONE & ONLY
+    </p>
+    <p className="font-pop font-semibold uppercase text-muted-foreground tracking-[0.10em] text-[10px] sm:text-xs mt-1">
+      AFFORDABLE MENS SALON
+    </p>
+  </div>
+</Link>
+
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
