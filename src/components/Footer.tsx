@@ -138,11 +138,25 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-border text-center">
-          <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} THE ONE & ONLY Affordable Men's Salon. All rights reserved.
-          </p>
-        </div>
+        {/* Copyright */}
+<div className="mt-12 pt-8 border-t border-border text-center">
+  <p className="text-muted-foreground text-sm">
+    © {new Date().getFullYear()} THE ONE & ONLY Affordable Men's Salon. All rights reserved.
+  </p>
+
+  <p className="mt-2 text-muted-foreground text-sm flex items-center justify-center gap-1">
+    Made with <span className="text-white">🤍</span> by{" "}
+    <a
+      href="https://staffarc.in/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="underline hover:text-primary transition-colors"
+    >
+      StaffArc
+    </a>
+  </p>
+</div>
+
       </div>
     </footer>
   );

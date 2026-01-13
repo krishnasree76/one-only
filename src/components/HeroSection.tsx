@@ -8,31 +8,43 @@ import hero1 from "@/assets/hero1.png";
 import hero2 from "@/assets/hero2.png";
 import hero3 from "@/assets/hero3.png";
 
-const slides = [
-  {
-    image: salonInterior,
-    showText: true, // ✅ only first slide has text overlay
-  },
-  {
-    image: hero1,
-    showText: false,
-  },
-  {
-    image: hero2,
-    showText: false,
-  },
-  {
-    image: hero3,
-    showText: false,
-  },
-];
-
 const HeroSection = () => {
   const phoneNumber = "917893398534";
   const message = encodeURIComponent(
     "Hello! I'm interested in THE ONE & ONLY franchise opportunity. Please share more details."
   );
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+  const slides = [
+    {
+      image: salonInterior,
+      primaryBtn: {
+        label: "Apply for Franchise",
+        to: "/apply-franchise",
+      },
+    },
+    {
+      image: hero1,
+      primaryBtn: {
+        label: "Services",
+        to: "/services",
+      },
+    },
+    {
+      image: hero2,
+      primaryBtn: {
+        label: "Contact",
+        to: "/contact",
+      },
+    },
+    {
+      image: hero3,
+      primaryBtn: {
+        label: "About",
+        to: "/about",
+      },
+    },
+  ];
 
   const [current, setCurrent] = useState(0);
 
@@ -41,8 +53,9 @@ const HeroSection = () => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 4000);
+
     return () => clearInterval(interval);
-  }, []);
+  }, [slides.length]);
 
   // ✅ Manual scroll
   const prevSlide = () => {
@@ -52,8 +65,6 @@ const HeroSection = () => {
   const nextSlide = () => {
     setCurrent((prev) => (prev + 1) % slides.length);
   };
-
-  const isFirstSlide = slides[current].showText;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -72,10 +83,8 @@ const HeroSection = () => {
           />
         </AnimatePresence>
 
-        {/* ✅ Overlay ONLY for first slide */}
-        {isFirstSlide && (
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
-        )}
+        {/* ✅ Overlay for all slides */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
       </div>
 
       {/* ✅ Manual Buttons (Always visible) */}
@@ -97,71 +106,71 @@ const HeroSection = () => {
         </button>
       </div>
 
-      {/* ✅ Text Content ONLY on slide 1 */}
-      {isFirstSlide && (
-        <div className="container-max px-4 md:px-8 relative z-30 pt-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-muted-foreground font-medium tracking-widest uppercase text-sm mb-6"
-            >
-              Franchise Opportunity
-            </motion.p>
+      {/* ✅ Text Content on ALL slides */}
+      <div className="container-max px-4 md:px-8 relative z-30 pt-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.p
+            key={`tag-${current}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-muted-foreground font-medium tracking-widest uppercase text-sm mb-6"
+          >
+            Franchise Opportunity
+          </motion.p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-foreground leading-tight mb-6"
-            >
-              THE ONE & ONLY
-              <span className="block text-gradient-silver mt-2">
-                Affordable Men's Salon
-              </span>
-            </motion.h1>
+          <motion.h1
+            key={`title-${current}`}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-foreground leading-tight mb-6"
+          >
+            THE ONE & ONLY
+            <span className="block text-gradient-silver mt-2">
+              Affordable Men's Salon
+            </span>
+          </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
-            >
-              Join India's fastest-growing men's grooming franchise. Premium services,
-              proven business model, and a complete support system.
-            </motion.p>
+          <motion.p
+            key={`desc-${current}`}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
+          >
+            Join India's fastest-growing men's grooming franchise. Premium services,
+            proven business model, and a complete support system.
+          </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          {/* ✅ Dynamic Buttons */}
+          <motion.div
+            key={`btn-${current}`}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <Link
+              to={slides[current].primaryBtn.to}
+              className="group flex items-center gap-2 px-8 py-4 bg-foreground text-background font-semibold rounded-md hover:bg-foreground/90 transition-all duration-300 hover-glow"
             >
-              <Link
-                to="/apply-franchise"
-                className="group flex items-center gap-2 px-8 py-4 bg-foreground text-background font-semibold rounded-md hover:bg-foreground/90 transition-all duration-300 hover-glow"
-              >
-                Apply for Franchise
-                <ArrowRight
-                  size={18}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
-              </Link>
+              {slides[current].primaryBtn.label}
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
 
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-8 py-4 border border-border text-foreground font-semibold rounded-md hover:border-foreground hover:bg-foreground/5 transition-all duration-300"
-              >
-                <MessageCircle size={18} />
-                Chat on WhatsApp
-              </a>
-            </motion.div>
-          </div>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-8 py-4 border border-border text-foreground font-semibold rounded-md hover:border-foreground hover:bg-foreground/5 transition-all duration-300"
+            >
+              <MessageCircle size={18} />
+              Chat on WhatsApp
+            </a>
+          </motion.div>
         </div>
-      )}
+      </div>
 
       {/* ✅ Dots */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">

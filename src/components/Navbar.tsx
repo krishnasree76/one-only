@@ -24,10 +24,15 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="The One & Only" className="h-14 w-auto" />
-            <div className="hidden sm:block">
-              <p className="text-xs text-muted-foreground tracking-widest uppercase">The One & Only</p>
-              <p className="text-sm font-semibold text-foreground">Affordable Men's Salon</p>
-            </div>
+            <div className="block leading-tight">
+  <p className="text-[10px] sm:text-xs text-muted-foreground tracking-widest uppercase">
+    The One & Only
+  </p>
+  <p className="text-xs sm:text-sm font-semibold text-foreground">
+    Affordable Men's Salon
+  </p>
+</div>
+
           </Link>
 
           {/* Desktop Navigation */}
