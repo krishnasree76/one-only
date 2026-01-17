@@ -9,6 +9,7 @@ import storesImage from "@/assets/gallery10.png";
 
 const stores = [
   {
+    id: "renigunta",
     name: "RENIGUNTA STORE (Head Office)",
     address:
       "10/210, Post Office St, beside HONDA SHOWROOM, Gowri Nagar, Tukivakam, Andhra Pradesh 517520",
@@ -16,12 +17,14 @@ const stores = [
     isHeadOffice: true,
   },
   {
+    id: "nagari",
     name: "NAGARI STORE",
     address:
       "Rama Naidu Colony, 10-7-281/1, Prakasam Rd, opposite Reliance Smart bazaar, Thiruthani Road, Nagari, Andhra Pradesh 517590",
     mapUrl: "https://maps.app.goo.gl/xZvjNJAVKnrWf1446?g_st=aw",
   },
   {
+    id: "varadhayapalem",
     name: "VARADHAYAPALEM STORE",
     address:
       "DK BABU HOUSE, Opposite MASS WINE SHOP, VARADHAYAPALEM, KALAHASTI ROAD, THIRUPATHI DISTRICT.",
@@ -29,22 +32,22 @@ const stores = [
       "https://www.google.com/maps/search/?api=1&query=VARADHAYAPALEM+KALAHASTI+ROAD+THIRUPATHI+DISTRICT",
   },
   {
+    id: "ntrpark",
     name: "SRIKALAHASTI NTR PARK STORE - 1",
     address:
       "16/523, Panagal Srikalahasti town, district, near NTR park, Tirupati, Andhra Pradesh 517640",
     mapUrl: "https://maps.app.goo.gl/SEtm76BQvHsAxeft9?g_st=aw",
   },
   {
+    id: "vmccircle",
     name: "SRIKALAHASTI VMC CIRCLE STORE - 2",
     address:
-      "DOOR NO. 2065/1, GROUND FLOOR, 1, PV Rd, near VMC CIRCLE, beside RR THEATRE, Srikalahasti, Tirupati, Andhra Pradesh 517644",
+      "DOOR NO. 2065/1, GROUND FLOOR, 1, PV Rd, near VMC CIRCLE, beside RR THEATRE, Srikalahasti, TIRUPATI, Andhra Pradesh 517644",
     mapUrl: "https://maps.app.goo.gl/aKboLz6HYaytAqx1A",
   },
 ];
 
 const OurStores = () => {
-  const headOffice = stores.find((s) => s.isHeadOffice);
-
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -95,7 +98,7 @@ const OurStores = () => {
 
                 return (
                   <motion.a
-                    key={index}
+                    key={store.id}
                     href={store.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -103,11 +106,11 @@ const OurStores = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.45, delay: index * 0.08 }}
                     viewport={{ once: true }}
-                    className={`group block p-6 rounded-xl transition-all duration-300 relative overflow-hidden
+                    className={`group block p-6 rounded-xl border transition-all duration-300 relative overflow-hidden
                       ${
                         isHead
-                          ? "bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/50 shadow-md"
-                          : "bg-card border border-border hover:border-primary/50 hover:shadow-md"
+                          ? "bg-gradient-to-br from-primary/20 to-primary/5 border-primary/50 shadow-md"
+                          : "bg-card border-border hover:border-primary/50 hover:shadow-md"
                       }`}
                   >
                     {/* shine */}
@@ -118,7 +121,11 @@ const OurStores = () => {
                         className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0
                           ${isHead ? "bg-primary text-primary-foreground" : "bg-primary/20"}`}
                       >
-                        {isHead ? <Crown size={20} /> : <MapPin className="text-primary" size={20} />}
+                        {isHead ? (
+                          <Crown size={20} />
+                        ) : (
+                          <MapPin className="text-primary" size={20} />
+                        )}
                       </div>
 
                       <div className="flex-1">
@@ -154,7 +161,7 @@ const OurStores = () => {
               })}
             </motion.div>
 
-            {/* Right: Image + Head Office Map */}
+            {/* Right: Image + Single Map */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -167,49 +174,40 @@ const OurStores = () => {
                 <img
                   src={storesImage}
                   alt="THE ONE & ONLY stores"
-                  className="w-full h-[420px] object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-[360px] object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
-              {/* Text */}
+              {/* Map under image ✅ */}
+              {/* Map under image ✅ */}
+{/* Map under image ✅ */}
+{/* Map under image ✅ */}
+{/* Map under image ✅ */}
+{/* Map under image ✅ */}
+<div className="overflow-hidden rounded-2xl border border-border bg-card shadow-md">
+  <iframe
+    title="THE ONE & ONLY Branches Map"
+    src="https://www.google.com/maps/d/embed?mid=1-TWiTCGGEhYuSjkvlqtju3ditJDR4z4&ehbc=2E312F"
+    className="w-full"
+    style={{
+      border: 0,
+      height: "550px",
+      minHeight: "550px",
+    }}
+    loading="lazy"
+    allowFullScreen
+  />
+</div>
+
+
+
+
               <div className="p-5 bg-card border border-border rounded-xl">
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Visit any outlet to experience premium grooming in a clean,
-                  comfortable and professional environment.
+                  All outlets are displayed in a single map for easy navigation.
+                  Click on any marker to view outlet details.
                 </p>
               </div>
-
-              {/* ✅ Head Office Map */}
-              {headOffice && (
-                <div className="p-5 bg-card border border-border rounded-xl">
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-                    Head Office Map
-                  </p>
-                  <h3 className="font-semibold text-foreground mb-4">
-                    {headOffice.name}
-                  </h3>
-
-                  <div className="overflow-hidden rounded-xl border border-border">
-                    <iframe
-                      title="Head Office Location"
-                      src="https://www.google.com/maps?q=10/210,%20Post%20Office%20St,%20beside%20HONDA%20SHOWROOM,%20Gowri%20Nagar,%20Tukivakam,%20Andhra%20Pradesh%20517520&output=embed"
-                      className="w-full h-[260px]"
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
-                  </div>
-
-                  <a
-                    href={headOffice.mapUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 mt-4 text-primary font-semibold text-sm hover:underline"
-                  >
-                    <ExternalLink size={16} />
-                    Open Head Office in Google Maps
-                  </a>
-                </div>
-              )}
             </motion.div>
           </div>
         </div>

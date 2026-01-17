@@ -96,10 +96,8 @@ const Contact = () => {
       title: "Address",
       lines: [
         {
-          label:
-            "10-419, G M Street, Beside Honda Showroom, Renigunta, Tirupati, AP, 517520",
-          href:
-            "https://www.google.com/maps/search/?api=1&query=10-419,+G+M+Street,+Beside+Honda+Showroom,+Renigunta,+Tirupati,+AP,+517520",
+          label: "RENIGUNTA STORE: 10/210, Post Office St, beside HONDA SHOWROOM, Gowri Nagar, Tukivakam, Andhra Pradesh 517520",
+          href: "https://maps.google.com/?cid=13844069859092920535&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
           external: true,
         },
       ],
@@ -156,7 +154,6 @@ const Contact = () => {
               viewport={{ once: true }}
               className="p-8 bg-card border border-border rounded-xl shadow-sm relative overflow-hidden"
             >
-              {/* shine */}
               <div className="pointer-events-none absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full hover:translate-x-full" />
 
               <h2 className="text-2xl font-serif font-bold text-foreground mb-2">
@@ -257,7 +254,6 @@ const Contact = () => {
                     viewport={{ once: true }}
                     className="group p-5 bg-card border border-border rounded-xl hover:border-primary/50 hover:shadow-md transition-all duration-300 relative overflow-hidden"
                   >
-                    {/* shine */}
                     <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full duration-700" />
 
                     <div className="relative z-10">
@@ -273,7 +269,7 @@ const Contact = () => {
                           const isInternal = line.href?.startsWith("/");
 
                           const common =
-                            "inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors";
+                            "inline-flex items-start gap-1 text-sm text-muted-foreground hover:text-primary transition-colors text-left";
 
                           if (isInternal) {
                             return (
@@ -291,8 +287,8 @@ const Contact = () => {
                               rel={isExternal ? "noopener noreferrer" : undefined}
                               className={common}
                             >
-                              {line.label}
-                              <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                              <span>{line.label}</span>
+                              <ArrowUpRight size={14} className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                             </a>
                           );
                         })}
@@ -345,31 +341,34 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="section-padding bg-card/50">
-        <div className="container-max">
-          <SectionTitle
-            subtitle="Location"
-            title="Find Us Here"
-            description="Visit our main outlet in Renigunta, Tirupati."
-          />
+      {/* Map Section */}
+<section className="section-padding bg-card/50">
+  <div className="container-max">
+    <SectionTitle
+      subtitle="Location"
+      title="Find Us Here"
+      description="Visit our store in Renigunta, Tirupati."
+    />
 
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="overflow-hidden rounded-xl border border-border bg-card"
-          >
-            <iframe
-              title="THE ONE & ONLY Location"
-              src="https://www.google.com/maps?q=10-419,+G+M+Street,+Beside+Honda+Showroom,+Renigunta,+Tirupati,+AP,+517520&output=embed"
-              className="w-full h-[420px]"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </motion.div>
-        </div>
-      </section>
+    <motion.div
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="overflow-hidden rounded-xl border border-border bg-card"
+    >
+      <iframe
+        title="THE ONE & ONLY Location"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3877.0195562725514!2d79.4716768!3d13.6262846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4d4b1a476b0103%3A0xc020043014ecf8d7!2sTHE%20ONE%20%26%20ONLY%20AFFORDABLE%20UNISEX%20SALON!5e0!3m2!1sen!2sin!4v1708100000000!5m2!1sen!2sin"
+        className="w-full h-[420px]"
+        style={{ border: 0 }}
+        allowFullScreen=""
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+    </motion.div>
+  </div>
+</section>
 
       <Footer />
     </div>
